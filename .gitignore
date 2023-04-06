@@ -37,3 +37,11 @@ vignettes/*.pdf
 
 # R Environment Variables
 .Renviron
+
+
+# .gitignore
+*.csv
+*.RData
+*.Rhistory
+MapaAsuncion/
+INFORMACION SNBE/

@@ -1,0 +1,97 @@
+---
+title: "Análisis de Eventos de Tarjetas de Pago de Pasaje de Transporte Público"
+author: "MondaGuasu"
+date: "2023/04/06"
+output:
+  pdf_document: default
+---
+
+## Introducción
+
+Este informe fue generado en R a partir de los datos obtenidos por Maluff.
+
+Lo que fue compartido tiene la siguiente estructura:
+
+|Campo|Descripción|
+|serialtarjeta|Serial de la Tarjeta|
+|idsam|Identificacion del vehiculo|
+|fechahoraevento|timestamp|
+|producto|Tipo de Producto|
+|montoevento|Monto del evento|
+|consecutivoevento|Consecutivo del evento|
+|identidad|Identidad|
+|tipoevento|Tipo de Evento|
+|latitude|Latitud geografica|
+|longitude|Longitud geografica|
+|idrutaestacion|id ruta estacion|
+|tipotransporte|tipo de transporte|
+
+Los archivos publicados son:
+```{r Archivos }
+list.files("INFORMACION SNBE/")
+```
+
+## Carga de datos y preparación
+
+```{r setup, message=FALSE, warning=FALSE}
+# Cargar las bibliotecas
+library(lubridate)
+library(dplyr)
+library(ggplot2)
+library(tidyverse)
+library(knitr)
+
+# Lista de archivos
+archivos <- c(
+"INFORMACION SNBE/1- Enero_2022.csv",
+"INFORMACION SNBE/2- Febrero_2022.csv",   
+"INFORMACION SNBE/3- Marzo_2022.csv",     
+"INFORMACION SNBE/4- Abril_2022.csv",     
+"INFORMACION SNBE/5- Mayo_2022.csv",      
+"INFORMACION SNBE/6- Junio_2022.csv",     
+"INFORMACION SNBE/7- Julio_2022.csv",     
+"INFORMACION SNBE/8- Agosto_2022.csv",    
+"INFORMACION SNBE/9- Setiembre_2022.csv", 
+"INFORMACION SNBE/10- Octubre_2022.csv",  
+"INFORMACION SNBE/11- Noviembre_2022.csv",
+"INFORMACION SNBE/12- Diciembre_2022.csv",
+"INFORMACION SNBE/13- Enero_2023.csv",    
+"INFORMACION SNBE/14- Febrero_2023.csv",  
+"INFORMACION SNBE/15- Marzo_2023.csv"
+)
+
+# Función para procesar un archivo y devolver un data.frame con el resultado
+procesar_archivo <- function(archivo) {
+  datos <- read.csv(archivo, header=TRUE, sep=";")
+  datos$fechahoraevento <- as.POSIXct(datos$fechahoraevento, format="%Y/%m/%d %H:%M:%S")
+  datos$fecha <- as.Date(datos$fechahoraevento)
+
+  resultado <- datos %>%
+    group_by(fecha, serialtarjeta) %>%
+    summarise(eventos = n(), monto_total = sum(montoevento)) %>%
+    slice_max(order_by = eventos, n = 1) %>%
+    ungroup()
+
+  return(resultado)
+}
+
+# Iterar sobre los archivos y procesarlos
+resultados <- lapply(archivos, procesar_archivo)
+
+# Combinar los resultados en un solo data.frame
+resultados_combinados <- bind_rows(resultados)
+```
+
+## Tarjetas más utilizadas por día
+A continuación, se muestra una tabla con las tarjetas más utilizadas en cada día:
+
+```{r Resumen, message=FALSE, warning=FALSE}
+kable(resultados_combinados, col.names = c("Fecha", "Serial Tarjeta", "TotalViajes", "Monto Total"), format = "html")
+```
+
+## Conclusiones
+Basado en el análisis de eventos de tarjetas de pago de pasaje de transporte público, se pueden obtener las siguientes conclusiones:
+
+
+```{r Conclusion, message=FALSE, warning=FALSE}
+```
