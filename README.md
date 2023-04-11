@@ -33,11 +33,11 @@ Este trabajo esta en curso, por lo que se ira actualizando día a día.
 
 ### Diferencia de Buses con el día anterior
 
-[idsamDiffxdia](Graficos/deltaidsamtotal.png)
+![idsamDiffxdia](Graficos/deltaidsamtotal.png)
 
 ### Diferencia de Pasajeros con el día anterior
 
-[serialtarjetaDiffxdia](Graficos/deltaserialtarjetatotal.png)
+![serialtarjetaDiffxdia](Graficos/deltaserialtarjetatotal.png)
 
 ### Buses por dia solo año 2023
 
