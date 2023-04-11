@@ -1,5 +1,17 @@
 # monda-guasu
 
+## Contexto
+
+* El 2 de marzo, *Mauricio Maluff* presentó una solicitud de información al viceministerio de transporte incluyendo datos del sistema de billetaje electrónico, para verificar el cumplimiento de frecuencias de buses que dicta el viceministerio
+* El 31 de marzo, pasados los 15 días sin respuesta, los abogados *Jorge Rolón Luna, Belén González y Romina Sotelo* presentaron una acción de amparo para obligar al viceministerio a cumplir con su obligación de compartir los datos
+* El 3 de abril, tras presión ciudadana debido a las reguladas, el viceministerio responde a la solicitud con [**8 CDs**](https://drive.google.com/drive/folders/12EbE0PEEnCjUVjhzMDNa1W7M9tR4ZzwW) incluyendo datos del sistema de billetaje electrónico de enero de 2022 a marzo de 2023
+
+## Scripts
+
+La idea de este repositorio es colocar diversos scripts en R para que cualquier persona con los conocimientos minimos básicos pueda hacer los analisis que se hicieron, eventualmente podrán corregir y cambiar parametros para aprender a hacer análisis de datos sobre este data set.
+
+Este trabajo esta en curso, por lo que se ira actualizando día a día.
+
 ## Diccionario de Datos
 
 |Campo|Descripción|Tipo de Dato|
@@ -16,3 +28,12 @@
 |Latitude|Latitude geográfica|punto flotante|
 |idrutaestacion|Identificador de ruta asociado a una EOT|string|
 |tipotransporte|Tipo de transporte (probablemente normal y diferencial)|entero|
+
+## Otros repositorios
+
+Existen otras personas que estuvieron analizando el mismo data set, estos son esos repositorios.
+
+* [Pablo](https://github.com/pabloacastillo/billetaje-electronico-py-2022)
+* [Karl](https://github.com/Karlheinzniebuhr/billetaje_electronico)
+
+Envía un mensaje para agregarte. Nombre y URL del repositorio.
