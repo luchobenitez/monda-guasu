@@ -41,19 +41,19 @@ Este trabajo esta en curso, por lo que se ira actualizando día a día.
 
 ### Buses por dia solo año 2023
 
-[idsamxdia2023](Graficos/idsamxdia2023.png)
+![idsamxdia2023](Graficos/idsamxdia2023.png)
 
 ### Buses por dia todo el dataset
 
-[idsamxdiatotal](Graficos/idsamxdiatotal.png)
+![idsamxdiatotal](Graficos/idsamxdiatotal.png)
 
 ### Buses por dia por hora del año 2023
 
-[idsamxfechahora2023](Graficos/idsamxfechahora2023.png)
+![idsamxfechahora2023](Graficos/idsamxfechahora2023.png)
 
 ### Buses por dia por hora solo Marzo 2023
 
-[idsamxfechahoraMarzo2023](Graficos/idsamxfechahoraMarzo2023.png)
+![idsamxfechahoraMarzo2023](Graficos/idsamxfechahoraMarzo2023.png)
 
 ## Otros repositorios
 
