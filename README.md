@@ -61,5 +61,6 @@ Existen otras personas que estuvieron analizando el mismo data set, estos son es
 
 * [Pablo](https://github.com/pabloacastillo/billetaje-electronico-py-2022)
 * [Karl](https://github.com/Karlheinzniebuhr/billetaje_electronico)
+* [Mateo](https://github.com/torresmateo/opama)
 
 Envía un mensaje para agregarte. Nombre y URL del repositorio.
