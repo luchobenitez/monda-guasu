@@ -114,4 +114,25 @@ print(scatter_plot)
 dev.off()
 
 # Ajustar UMAP a los datos normalizados
-umap_model <- umap(df_norm, metric = "
+set.seed(42)
+umap_model <- umap(df_norm, metric = "euclidean")
+
+# Agregar las coordenadas UMAP al dataframe
+df$umap_x <- umap_model$layout[, 1]
+df$umap_y <- umap_model$layout[, 2]
+
+# Crear un gráfico de dispersión de los datos coloreados por cluster
+umap_plot <- ggplot(df, aes(x = umap_x, y = umap_y, color = as.factor(cluster))) +
+  geom_point() +
+  theme_minimal()
+
+# Imprimir el gráfico de dispersión UMAP
+print(umap_plot)
+
+# Para guardar el gráfico de dispersión UMAP en el archivo PDF
+pdf("results_with_umap.pdf")
+print(heatmap)
+print(kl_plot)
+print(scatter_plot)
+print(umap_plot)
+dev.off()

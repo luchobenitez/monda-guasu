@@ -1,5 +1,8 @@
 # monda-guasu
 
+**ACA ESTA EL DATASET**
+|[**8 CDs**](https://drive.google.com/drive/folders/12EbE0PEEnCjUVjhzMDNa1W7M9tR4ZzwW)|
+
 ## Contexto
 
 * El 2 de marzo, *Mauricio Maluff* presentó una solicitud de información al viceministerio de transporte incluyendo datos del sistema de billetaje electrónico, para verificar el cumplimiento de frecuencias de buses que dicta el viceministerio
@@ -19,11 +22,11 @@ Este trabajo esta en curso, por lo que se ira actualizando día a día.
 |serialtarjeta|Serial de la tarjeta que identifica al pasajero. Asumimos que identifica a un pasajero|hash|
 |idsam|Identificador único de dispositivo validador instalado en el bus. Asumimos que identifica al bus|hash|
 |fechahoraevento|Timestamp del inicio del viaje|timestamp|
-|producto|Tipo de producto (Aparentemente CR=Crédito, ES=Especial, MO=Monedero)|string|
+|producto|Tipo de producto (Aparentemente CR=Crédito o saldo negativo de la tarjeta, ES=Uso Especial, MO=Monedero o uso normal)|string|
 |montoevento|Monto del evento descontado de la tarjeta (el monto podría estar relacionado a otros campos)|entero|
-|consecutivoevento|Consecutivo del evento, contador de tipo de evento asociado a serialtarjeta y otros campos|entero|
+|consecutivoevento|Consecutivo de la tarjeta correspondiente a la transacción|entero|
 |identidad|Identidad (valores 2 y 3)|entero|
-|tipoevento|Tipo de evento (4 uso del producto / 8 ? / 10 Recarga del producto)|punto flotante|
+|tipoevento|Tipo de evento (4 uso del producto o pago/ 8 Uso de una devolución / 10 Recarga del producto / 14 Devolucion)|punto flotante|
 |longitude|Longitud geográfica|punto flotante|
 |Latitude|Latitude geográfica|punto flotante|
 |idrutaestacion|Identificador de ruta asociado a una EOT|string|

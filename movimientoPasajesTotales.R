@@ -49,27 +49,39 @@ monto_mes_plot <- transporte_pasajes %>%
 # Save the plot as a PNG file
 ggsave("grafico_monto_mes.png", monto_mes_plot)
 
-# Create a plot of total montoevento by fecha and idrutaestacion
-monto_fecha_ruta_plot <- transporte_pasajes %>%
-  mutate(fecha = as.Date(fechahoraevento)) %>%
-  group_by(fecha, idrutaestacion) %>%
-  summarize(total_monto = sum(montoevento)) %>%
-  ggplot(aes(x = fecha, y = total_monto, color = idrutaestacion)) +
-  geom_line() +
-  labs(title = "Total de montoevento por fecha por idrutaestacion")
+# Obtener valores únicos de idrutaestacion
+rutas <- unique(transporte_pasajes$idrutaestacion)
 
-# Save the plot as a PNG file
-ggsave("grafico_monto_fecha_ruta.png", monto_fecha_ruta_plot)
+# Crear lista vacía para guardar resultados por ruta
+lista_resultados <- vector("list", length = length(rutas))
 
-# Save all the data to CSV files
-write.csv(monto_fecha, file = "monto_fecha.csv", row.names = FALSE)
-write.csv(monto_semana, file = "monto_semana.csv", row.names = FALSE)
-write.csv(monto_mes, file = "monto_mes.csv", row.names = FALSE)
-write.csv(monto_fecha_ruta, file = "monto_fecha_ruta.csv", row.names = FALSE)
+# Iterar sobre cada idrutaestacion y calcular el monto total por fecha
+for (i in 1:length(rutas)) {
+  ruta_actual <- rutas[i]
+  monto_ruta_actual <- transporte_pasajes %>%
+    filter(idrutaestacion == ruta_actual) %>%
+    mutate(fecha = as.Date(fechahoraevento)) %>%
+    group_by(fecha) %>%
+    summarize(monto_total = sum(montoevento))
+  
+  # Agregar resultados a la lista
+  lista_resultados[[i]] <- monto_ruta_actual
+}
 
-# Combine all the plots into a single PDF file
-pdf("graficos.pdf")
-ggplot(monto_fecha, aes(x = fecha, y = total_monto)) +
-  geom_line() +
-  labs(title = "Total de montoevento por fecha")
-ggplot(monto
+# Guardar resultados en archivos CSV
+for (i in 1:length(rutas)) {
+  ruta_actual <- rutas[i]
+  nombre_archivo <- paste0("monto_", ruta_actual, ".csv")
+  write.csv(lista_resultados[[i]], file = nombre_archivo, row.names = FALSE)
+}
+
+# Generar gráficos por ruta
+for (i in 1:length(rutas)) {
+  ruta_actual <- rutas[i]
+  monto_ruta_actual <- lista_resultados[[i]]
+  
+  ggplot(monto_ruta_actual, aes(x = fecha, y = monto_total)) +
+    geom_line() +
+    labs(title = paste("Total de montoevento por fecha para la ruta", ruta_actual)) +
+    ggsave(paste0("grafico_monto_", ruta_actual, ".png"))
+}
