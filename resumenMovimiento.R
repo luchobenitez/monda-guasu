@@ -9,6 +9,8 @@
 library(tidyverse)
 library(lubridate)
 library(ggplot2)
+library(scales, warn.conflicts = FALSE)
+
 
 
 # Read the data from the CSV file
@@ -42,20 +44,18 @@ for (j in 1:length(trans)) {
             group_by(fecha) %>%
             summarize(monto_total = sum(montoevento))
         
-        # Agregar resultados a la lista
-        lista_rutas_esultados[[i]] <- monto_ruta_actual
-        nombre_csv <- paste0("csv/monto", ruta_actual, "_", tipotransporte, ".csv")
-        write.csv(lista_rutas_esultados[[i]], file = nombre_csv, row.names = FALSE)  
-        monto_ruta_actual <- lista_rutas_esultados[[i]]
+        nombre_csv <- paste0("csv/monto_", ruta_actual, "_", trans_actual, ".csv")
+        write.csv(monto_ruta_actual, file = nombre_csv, row.names = FALSE)  
         
         ggplot(monto_ruta_actual, aes(x = fecha, y = monto_total)) +
             geom_line(color = "red", linewidth = 1.5) +
-            labs(title = paste("Total de pasajes por fecha (ruta", ruta_actual)) +
-            scale_y_continuous(labels = scales::label_number_si()) +
+            labs(title = paste("Total de pasajes por fecha (ruta", ruta_actual, "/", trans_actual, ")"),
+                y = "Monto total de pasajes (en millones Gs)") +
+            scale_y_continuous(labels = scales::label_number(big.mark = ",", scale = 1e-6)) +
             theme(legend.position = "none")
             
-        nombre_grafico <- paste0("grafico_monto", ruta_actual, "_", tipotransporte, ".png")
-        ggsave(nombre_grafico, ".png"))  
+        nombre_grafico <- paste0("Grafico/monto_", ruta_actual, "_", trans_actual, ".png")
+        ggsave(nombre_grafico, width = 6.25, height = 8.33, dpi = 72)
  
     }
 }

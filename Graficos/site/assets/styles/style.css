@@ -1,0 +1,112 @@
+/* Reset estilos por defecto */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body, html {
+    font-family: 'Source Sans Pro', sans-serif;
+    margin: 0;
+    padding: 0;
+    line-height: 1.2;
+}
+        
+h1, h2, h3, p {
+    margin: 0;
+    font-weight: 400;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}	
+
+.coverPage {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-image: url(/assets/img/background.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.coverPage::before {
+    content: '';
+    display: block;
+    position: absolute; 
+    background: black;
+    opacity: .8;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+}
+
+.__coverPage-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    color: white;
+    height: 50%;
+    width: 50%;
+    z-index: 1000;
+    text-align: center;
+    opacity: .9;
+    padding: 1em;
+}
+
+.__coverPage-content h1 {
+    font-size: 4em;
+    color: #F9A825;
+    opacity: .8;
+}
+
+.__coverPage-content h2 {
+    font-size: 2.2em;
+    margin-bottom: 1.5em;
+}
+
+.__coverPage-content h3 {
+    font-size: 1.6em;
+    margin-bottom: .8em;
+    text-transform: uppercase;
+    opacity: .7;
+}
+
+.__coverPage-content p {
+    font-size: .95em;
+    margin-bottom: 1.5em;
+    line-height: 1.5;
+    opacity: .7;
+}
+
+.socialIcon {
+    margin-right: 10px;
+    opacity: .7;
+}
+
+.socialIcon i {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    border: 2px solid white;
+    border-radius: 50%;
+    padding: 15px;
+    height: 25px;
+    width: 25px;
+    transition: all .3s
+}
+
+.socialIcon i:hover {
+    color: #F9A825;
+    border-color: #F9A825;
+}
+
+@media screen and (min-width: 321px) and (max-width: 1023px) {
+    .__coverPage-content {
+        width: 100%;
+    }
+}
