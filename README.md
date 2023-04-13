@@ -53,27 +53,27 @@ ideot,eot,troncal,idrutaestacion,ramal,estado
 
 ### Diferencia de Buses con el día anterior
 
-![idsamDiffxdia](Graficos/deltaidsamtotal.png)
+![idsamDiffxdia](Graficos/buses/deltaidsamtotal.png)
 
 ### Diferencia de Pasajeros con el día anterior
 
-![serialtarjetaDiffxdia](Graficos/deltaserialtarjetatotal.png)
+![serialtarjetaDiffxdia](Graficos/personas/deltaserialtarjetatotal.png)
 
 ### Buses por dia solo año 2023
 
-![idsamxdia2023](Graficos/idsamxdia2023.png)
+![idsamxdia2023](Graficos/buses/idsamxdia2023.png)
 
 ### Buses por dia todo el dataset
 
-![idsamxdiatotal](Graficos/idsamxdiatotal.png)
+![idsamxdiatotal](Graficos/buses/idsamxdiatotal.png)
 
 ### Buses por dia por hora del año 2023
 
-![idsamxfechahora2023](Graficos/idsamxfechahora2023.png)
+![idsamxfechahora2023](Graficos/buses/idsamxfechahora2023.png)
 
 ### Buses por dia por hora solo Marzo 2023
 
-![idsamxfechahoraMarzo2023](Graficos/idsamxfechahoraMarzo2023.png)
+![idsamxfechahoraMarzo2023](Graficos/buses/idsamxfechahoraMarzo2023.png)
 
 ## Otros repositorios
 
