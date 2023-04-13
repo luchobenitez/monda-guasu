@@ -66,22 +66,13 @@ for (i in 1:length(rutas)) {
   
   # Agregar resultados a la lista
   lista_resultados[[i]] <- monto_ruta_actual
-}
-
-# Guardar resultados en archivos CSV
-for (i in 1:length(rutas)) {
-  ruta_actual <- rutas[i]
   nombre_archivo <- paste0("monto_", ruta_actual, ".csv")
-  write.csv(lista_resultados[[i]], file = nombre_archivo, row.names = FALSE)
-}
-
-# Generar gráficos por ruta
-for (i in 1:length(rutas)) {
-  ruta_actual <- rutas[i]
+  write.csv(lista_resultados[[i]], file = nombre_archivo, row.names = FALSE)  
   monto_ruta_actual <- lista_resultados[[i]]
   
   ggplot(monto_ruta_actual, aes(x = fecha, y = monto_total)) +
     geom_line() +
-    labs(title = paste("Total de montoevento por fecha para la ruta", ruta_actual)) +
-    ggsave(paste0("grafico_monto_", ruta_actual, ".png"))
+    labs(title = paste("Total de montoevento por fecha para la ruta", ruta_actual))
+    
+  ggsave(paste0("grafico_monto_", ruta_actual, ".png"))  
 }
