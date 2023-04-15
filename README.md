@@ -38,8 +38,6 @@ Tenemos varios conjuntos de datos que fueron proveídos:
 
 ### Tabla de Rutas
 
-ideot,eot,troncal,idrutaestacion,ramal,estado
-
 |Campo|Descripción|Tipo de Dato|
 |-----|-----------|------------|
 |ideot|Id de la EOT en la tabla|entero|
@@ -50,6 +48,10 @@ ideot,eot,troncal,idrutaestacion,ramal,estado
 |estado|descripción del ramal|string|
 
 ## Algunos gráficos
+
+### Total de viajes por EOT
+
+![idsamDiffxdia](Graficos/personas/eot.png)
 
 ### Diferencia de Buses con el día anterior
 
@@ -82,5 +84,6 @@ Existen otras personas que estuvieron analizando el mismo data set, estos son es
 * [Pablo](https://github.com/pabloacastillo/billetaje-electronico-py-2022)
 * [Karl](https://github.com/Karlheinzniebuhr/billetaje_electronico)
 * [Mateo](https://github.com/torresmateo/opama)
+* [kike](https://github.com/egkike/billetaje)
 
 Envía un mensaje para agregarte. Nombre y URL del repositorio.
