@@ -7,4 +7,4 @@ datos <- readRDS("datos_unidos.rds")
 datos_seleccionados <- datos[, .(latitude, longitude, idrutaestacion)]
 
 # Guardar los resultados en un archivo CSV
-fwrite(datos_seleccionados, "rutas.csv")
+fwrite(datos_seleccionados, "geoidrutaestación.csv")
